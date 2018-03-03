@@ -9,6 +9,6 @@ struct distance_point {
 typedef struct distance_point dist_pt;
 
 dist_pt** serial_neighbours_distance(int** a, int** b, int dim, int ref_points, int query_points);
-dist_pt** parallel_neighbours_distance(int* a, int* b, int dim);
+dist_pt** parallel_neighbours_distance(int** a, int** b, int dim, int ref_points, int query_points);
 
 #endif
