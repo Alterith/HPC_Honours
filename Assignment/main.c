@@ -9,9 +9,9 @@ dist_pt** serial_neighbours_distance(int** a, int** b, int dim, int ref_points, 
 
 int main(void){
 
-    int dim = 200;
-    int num_ref_points = 50;
-    int num_query_points = 50;
+    int dim = 2;
+    int num_ref_points = 5;
+    int num_query_points = 5;
     double seed = time(NULL);
     
     //generate seed for random move seed to main for only 1 comparison

@@ -70,3 +70,17 @@ void mergesort(dist_pt* point_dist, int left, int right, int dim){
         free(temp);
     }
 }
+
+void insertionsort(dist_pt* point_dist, int num_ref_pt){
+
+    for(int i = 1; i<num_ref_pt; i++){
+        dist_pt x = point_dist[i];
+        int j = i - 1;
+
+        while((j>=0) && (point_dist[j].distance>x.distance)){
+            point_dist[j+1] = point_dist[j];
+            j = j - 1;
+        }
+        point_dist[j+1] = x;
+    }
+}
