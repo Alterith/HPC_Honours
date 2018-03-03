@@ -20,7 +20,9 @@ dist_pt** serial_neighbours_distance(int** a, int** b, int dim, int ref_points, 
     }
     //sorting segment
     for(int i = 0; i<query_points; i++){
-        quicksort(point_dist[i], 0, ref_points-1);
+        mergesort(point_dist[i], 0, ref_points-1, dim);
     }
+    
+    //mergesort(point_dist[0], 0, ref_points-1);
     return point_dist;
 }

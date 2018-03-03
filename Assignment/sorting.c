@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 #include "sorting.h"
 #include "k_nearest_neighbours.h"
 
@@ -33,4 +34,39 @@ void quicksort(dist_pt* point_dist, int left, int right){
 
     }
 
+}
+
+void mergesort(dist_pt* point_dist, int left, int right, int dim){
+    if((right-left)>0){
+        double mid_1 = floor(((right+left-1)/2));
+        int mid = (int)(mid_1);
+        //printf("%d\n", (right-left));
+        mergesort(point_dist, left, mid, dim);
+        mergesort(point_dist, mid+1, right, dim);
+        dist_pt* temp = malloc((dim)*sizeof(dist_pt));
+
+        for(int i = mid; i>= left; i--){
+            temp[i] = point_dist[i];
+        }
+
+        for(int j = mid+1; j<=right; j++){
+            //printf("right: %d left: %d (right+mid-j+1): %d \n", right, left, right+mid-j+1);
+            temp[right+mid-j+1] = point_dist[j];
+        }
+        //printf("\n");
+
+        int i = left;
+        int j = right;
+
+        for(int k = left; k<=right; k++){
+            if(temp[i].distance<temp[j].distance){
+                point_dist[k] = temp[i];
+                i = i + 1;
+            }else{
+                point_dist[k] = temp[j];
+                j = j - 1;
+            }
+        }
+        free(temp);
+    }
 }

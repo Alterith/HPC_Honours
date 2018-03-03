@@ -12,7 +12,7 @@ int** point_set_gen(int dim, int points){
         //each array is of length dim
         arrays[i] = elements + i*dim;
         for(int j = 0; j < dim; j++){
-            arrays[i][j] = (rand() - (RAND_MAX/2))%100;
+            arrays[i][j] = (rand() - (RAND_MAX/2))%1000;
         }
     }
 
