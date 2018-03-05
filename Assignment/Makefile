@@ -10,7 +10,7 @@ valgrind: valgrind_clean
 	--track-origins=yes \
 	--verbose \
 	--log-file=valgrind-out.txt \
-	./main
+	./main.o
 
 valgrind_clean:
 	rm -f *.txt
