@@ -316,7 +316,7 @@ void mergeSortParallel_task(dist_pt* arr, int l, int r, int ref_points)
             mergeSort(arr, m+1, r);
 
         }else{
-            #pragma omp parallel num_threads(2)
+            #pragma omp parallel num_threads(8)
 		    {
 			    //ensure each task only gets executed once
 			    #pragma omp single

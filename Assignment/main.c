@@ -13,8 +13,8 @@ dist_pt** parallel_neighbours_distance(int** a, int** b, int dim, int ref_points
 int main(void){
 
     int dim = 500;
-    int num_ref_points = 1500;
-    int num_query_points = 1500;
+    int num_ref_points = 1000000;
+    int num_query_points = 10;
     double seed = time(NULL);
     
     //generate seed for random move seed to main for only 1 comparison

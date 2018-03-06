@@ -24,7 +24,7 @@ double manhattan(int* ref, int* pt, int dim){
 
 double euclidean_parallel(int* ref, int* pt, int dim){
     double distance = 0.0;
-    #pragma omp parallel for schedule(static, (dim%8)+1)
+    #pragma omp parallel for schedule(static, 8)
     for(int i = 0; i<dim; i++){
 
         //printf("t: %d, i: %d \n", omp_get_thread_num(), i);
@@ -35,7 +35,7 @@ double euclidean_parallel(int* ref, int* pt, int dim){
 }
 double manhattan_parallel(int* ref, int* pt, int dim){
     double distance = 0;
-    #pragma omp parallel for schedule(static, (dim%8)+1)
+    #pragma omp parallel for schedule(static, 8)
     for(int i = 0; i<dim; i++){
         distance += abs(ref[i]-pt[i]);
     }

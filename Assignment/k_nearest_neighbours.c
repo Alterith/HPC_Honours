@@ -21,10 +21,11 @@ dist_pt** serial_neighbours_distance(int** a, int** b, int dim, int ref_points, 
     }
     //sorting segment
     double s_time = 0.0;
+    printf("sorting serial\n");
     double start_time_s=omp_get_wtime();
     for(int i = 0; i<query_points; i++){
-        //quicksort(point_dist[i], 0, ref_points-1);
-        mergeSort(point_dist[i], 0, ref_points-1);
+        quicksort(point_dist[i], 0, ref_points-1);
+        //mergeSort(point_dist[i], 0, ref_points-1);
         s_time+=omp_get_wtime()-start_time_s;
     }
     s_time = s_time/query_points;
@@ -48,12 +49,14 @@ dist_pt** parallel_neighbours_distance(int** a, int** b, int dim, int ref_points
     }
     //sorting segment
     double p_time = 0.0;
+    printf("sorting parallel\n");
     double start_time_p=omp_get_wtime();
 
-    #pragma omp parallel for schedule(static, 2)
+    #pragma omp parallel for schedule(static, 8)
     for(int i = 0; i<query_points; i++){
 
         //quicksort_parallel_task(point_dist[i], 0, ref_points-1, ref_points);
+        //mergeSortParallel_task(point_dist[i], 0, ref_points-1, ref_points);
         mergeSortParallel_sections(point_dist[i], 0, ref_points-1, ref_points);
         p_time+=omp_get_wtime()-start_time_p;
     }
